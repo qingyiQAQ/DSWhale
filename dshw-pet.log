@@ -1,0 +1,296 @@
+02:40:50 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:40:50 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:40:50 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:40:56 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:40:56 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:40:56 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:41:07 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:41:07 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:41:07 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:41:08 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:41:08 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:41:08 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:41:09 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:41:09 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:41:09 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:41:28 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:41:28 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:41:28 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:41:28 [INFO] ui.pet_window: [pet] 每轮消耗轮询线程已启动
+02:41:28 [INFO] ui.pet_window: [pet] 桌宠启动完成：scale=1.50 模式=ledger 记账文件=C:\Users\cc\.dsh\.dshw-usage.json
+02:41:28 [INFO] core.turn_cost: [turn_cost] 已对齐 DSH 每轮消耗 seq=0
+02:43:24 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+02:43:24 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+02:43:24 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+02:43:24 [INFO] ui.pet_window: [pet] 恢复位置锚点 right/bottom
+02:43:24 [INFO] ui.pet_window: [pet] 每轮消耗轮询线程已启动
+02:43:24 [INFO] ui.pet_window: [pet] 桌宠启动完成：scale=1.50 模式=ledger 记账文件=C:\Users\cc\.dsh\.dshw-usage.json
+02:43:24 [INFO] core.turn_cost: [turn_cost] 已对齐 DSH 每轮消耗 seq=0
+02:43:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:35 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:36 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:37 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:38 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:39 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:53 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:54 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:55 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:55 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:43:56 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:44:43 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:44:45 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:44:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:44:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:44:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:07 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:41 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:42 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:43 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:44 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:45 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:46:46 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:47:28 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:47:29 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:47:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:48:26 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:48:28 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:48:29 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:48:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:48:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+02:48:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:19:53 [CRITICAL] main: 未捕获异常
+Traceback (most recent call last):
+  File "D:\Projects\DSWhale\ui\bubble.py", line 96, in <lambda>
+    self._movie.frameChanged.connect(lambda _frame: self.changed.emit())
+    
+KeyboardInterrupt
+03:20:12 [INFO] main: [main] 正在启动 DeepSeek 小鲸鱼桌宠...
+03:20:12 [INFO] core.config: [config] 已加载设置: C:\Users\cc\.dsh\.dshw-size.json
+03:20:12 [WARNING] core.config: [config] 未解析到凭据 DEEPSEEK_PLATFORM_TOKEN
+03:20:12 [INFO] ui.pet_window: [pet] 恢复位置锚点 left/bottom
+03:20:12 [INFO] ui.pet_window: [pet] 每轮消耗轮询线程已启动
+03:20:12 [INFO] ui.pet_window: [pet] 桌宠启动完成：scale=1.50 模式=ledger 记账文件=C:\Users\cc\.dsh\.dshw-usage.json
+03:20:12 [INFO] core.turn_cost: [turn_cost] 已对齐 DSH 每轮消耗 seq=0
+03:20:15 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:16 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:26 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:27 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 1.60（窗口 400x400）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 1.70（窗口 425x425）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 1.80（窗口 450x450）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 1.90（窗口 475x475）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 2.00（窗口 500x500）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 2.10（窗口 525x525）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 2.20（窗口 550x550）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 2.30（窗口 575x575）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:30 [INFO] ui.pet_window: [pet] 缩放调整为 2.40（窗口 600x600）
+03:20:30 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 2.30（窗口 575x575）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 2.20（窗口 550x550）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 2.10（窗口 525x525）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 2.00（窗口 500x500）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.90（窗口 475x475）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.80（窗口 450x450）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.70（窗口 425x425）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.60（窗口 400x400）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.50（窗口 375x375）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.40（窗口 350x350）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.30（窗口 325x325）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:31 [INFO] ui.pet_window: [pet] 缩放调整为 1.20（窗口 300x300）
+03:20:31 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 1.10（窗口 275x275）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 1.00（窗口 250x250）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 0.90（窗口 225x225）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 0.80（窗口 200x200）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 0.70（窗口 175x175）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 0.80（窗口 200x200）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 0.90（窗口 225x225）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 1.00（窗口 250x250）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 1.10（窗口 275x275）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 1.20（窗口 300x300）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:32 [INFO] ui.pet_window: [pet] 缩放调整为 1.30（窗口 325x325）
+03:20:32 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:33 [INFO] ui.pet_window: [pet] 缩放调整为 1.40（窗口 350x350）
+03:20:33 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:33 [INFO] ui.pet_window: [pet] 缩放调整为 1.50（窗口 375x375）
+03:20:33 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:33 [INFO] ui.pet_window: [pet] 缩放调整为 1.60（窗口 400x400）
+03:20:33 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:33 [INFO] ui.pet_window: [pet] 缩放调整为 1.70（窗口 425x425）
+03:20:33 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:33 [INFO] ui.pet_window: [pet] 缩放调整为 1.80（窗口 450x450）
+03:20:33 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:35 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:40 [INFO] ui.pet_window: [pet] 缩放调整为 1.90（窗口 475x475）
+03:20:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:40 [INFO] ui.pet_window: [pet] 缩放调整为 2.00（窗口 500x500）
+03:20:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:40 [INFO] ui.pet_window: [pet] 缩放调整为 2.10（窗口 525x525）
+03:20:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:40 [INFO] ui.pet_window: [pet] 缩放调整为 2.20（窗口 550x550）
+03:20:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:40 [INFO] ui.pet_window: [pet] 缩放调整为 2.30（窗口 575x575）
+03:20:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:40 [INFO] ui.pet_window: [pet] 缩放调整为 2.40（窗口 600x600）
+03:20:40 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:42 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:43 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:44 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:46 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:49 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:49 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:50 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:20:52 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:22 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 2.30（窗口 575x575）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 2.20（窗口 550x550）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 2.10（窗口 525x525）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 2.00（窗口 500x500）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.90（窗口 475x475）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.80（窗口 450x450）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.70（窗口 425x425）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.60（窗口 400x400）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.50（窗口 375x375）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.40（窗口 350x350）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.30（窗口 325x325）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.20（窗口 300x300）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.10（窗口 275x275）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 1.00（窗口 250x250）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.90（窗口 225x225）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.80（窗口 200x200）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.70（窗口 175x175）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.60（窗口 150x150）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.70（窗口 175x175）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.80（窗口 200x200）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:47 [INFO] ui.pet_window: [pet] 缩放调整为 0.90（窗口 225x225）
+03:21:47 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.00（窗口 250x250）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.10（窗口 275x275）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.20（窗口 300x300）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.30（窗口 325x325）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.40（窗口 350x350）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.50（窗口 375x375）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:48 [INFO] ui.pet_window: [pet] 缩放调整为 1.60（窗口 400x400）
+03:21:48 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:49 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:21:50 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:22:16 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:22:18 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:22:28 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:22:28 [DEBUG] core.config: [config] 设置已保存: C:\Users\cc\.dsh\.dshw-size.json
+03:22:28 [INFO] ui.pet_window: [pet] 桌宠已退出
+03:22:28 [INFO] main: [main] 桌宠退出，代码 0
