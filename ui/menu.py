@@ -71,6 +71,24 @@ QSpinBox {
 QSpinBox:disabled { color: rgba(32, 49, 112, 0.4); background: rgba(32, 49, 112, 0.06); }
 QCheckBox { color: #203170; font-size: 12px; }
 QCheckBox::indicator { width: 16px; height: 16px; }
+QPushButton {
+    border: 1px solid rgba(32, 49, 112, 0.4);
+    border-radius: 6px;
+    padding: 6px 8px;
+    color: #203170;
+    background: rgba(32, 49, 112, 0.08);
+    font-size: 12px;
+}
+QPushButton:hover {
+    background: #e0433f;
+    border-color: #e0433f;
+    color: #ffffff;
+}
+QPushButton:pressed {
+    background: #c93430;
+    border-color: #c93430;
+    color: #ffffff;
+}
 """
 
 MIN_SCALE = 0.6
