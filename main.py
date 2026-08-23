@@ -22,6 +22,7 @@ if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 from PySide6.QtCore import Qt  # noqa: E402
+from PySide6.QtGui import QIcon  # noqa: E402
 from PySide6.QtWidgets import QApplication  # noqa: E402
 
 from ui.pet_window import PetWindow  # noqa: E402
@@ -69,6 +70,8 @@ def main() -> int:
 
     app = QApplication(sys.argv)
     app.setApplicationName("DeepSeek 小鲸鱼")
+    # 应用图标：使用鲸鱼图（任务栏 / Alt-Tab / 任务管理器里显示的图标）。
+    app.setWindowIcon(QIcon(os.path.join(ASSETS_DIR, "DSniang1.png")))
     app.setQuitOnLastWindowClosed(False)  # 菜单关闭不退出，仅主窗口关闭时退出。
 
     if not os.path.isfile(os.path.join(ASSETS_DIR, "DSniang1.png")):
