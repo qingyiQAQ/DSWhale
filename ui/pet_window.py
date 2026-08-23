@@ -128,8 +128,7 @@ class PetWindow(QWidget):
 
     def __init__(self, assets_dir: str):
         super().__init__(None, Qt.WindowType.FramelessWindowHint
-                         | Qt.WindowType.WindowStaysOnTopHint
-                         | Qt.WindowType.Tool)
+                         | Qt.WindowType.WindowStaysOnTopHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setWindowTitle("DeepSeek 小鲸鱼")
         self.setWindowIcon(QIcon(os.path.join(assets_dir, "DSniang1.png")))
