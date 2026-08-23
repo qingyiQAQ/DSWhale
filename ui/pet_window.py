@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import logging
 import os
+import random
 import threading
 import time
 
@@ -25,7 +26,7 @@ from core import ledger, pricing, usage
 from core.audio import SoundPlayer
 from core.balance import BalanceClient
 from core.config import Config, ledger_path
-from core.random_lines import gif_fallback_lines, pick_random_lines
+from core.random_lines import gif_fallback_lines, pick_idle_remark, pick_random_lines
 from core.turn_cost import TurnCostMonitor
 
 from .bubble import BubbleRenderer, BUBBLE_ASPECT
@@ -213,6 +214,12 @@ class PetWindow(QWidget):
         self._refresh_timer = QTimer(self)
         self._refresh_timer.timeout.connect(lambda: self._refresh_balance_async(False))
         self._refresh_timer.start(REFRESH_MS)
+
+        # 空闲俏皮话：未点击时每 3-5 秒随机弹一句（单次触发，每次到点后重新排定）。
+        self._idle_talk_timer = QTimer(self)
+        self._idle_talk_timer.setSingleShot(True)
+        self._idle_talk_timer.timeout.connect(self._on_idle_talk)
+        self._arm_idle_talk()
 
         # 屏幕尺寸变化时按锚点重新吸附。
         screen = QGuiApplication.primaryScreen()
@@ -419,6 +426,7 @@ class PetWindow(QWidget):
     def mousePressEvent(self, event) -> None:
         if event.button() != Qt.MouseButton.LeftButton:
             return
+        self._arm_idle_talk()  # 任何左键交互都重置空闲计时
         pos = event.position()
 
         # 菜单打开时：按下关闭菜单，不进入拖拽/气泡（对齐原项目 onDocPointerDown）。
@@ -625,6 +633,28 @@ class PetWindow(QWidget):
         if self._bubble_timer is not None:
             self._bubble_timer.stop()
             self._bubble_timer = None
+
+    # ------------------------------------------------------------------ #
+    # 空闲俏皮话
+    # ------------------------------------------------------------------ #
+    def _arm_idle_talk(self) -> None:
+        """重新排定下一次空闲俏皮话（随机 3-5 秒）。"""
+        self._idle_talk_timer.start(random.randint(3000, 5000))
+
+    def _on_idle_talk(self) -> None:
+        """空闲计时到点：弹一句随机俏皮话，并重新排定下一次。"""
+        self._arm_idle_talk()
+        if not self._bubble_on or self._cost_bubble_active:
+            return
+        self._show_idle_remark()
+
+    def _show_idle_remark(self) -> None:
+        """展示一句随机俏皮话（气泡常开，每次到点更新内容；不带动画避免累积）。"""
+        self._cancel_bubble_timer()
+        self._bubble_random_active = True
+        self.bubble.set_random(pick_idle_remark(), self.bubble.gif_available)
+        if not self.bubble.is_open:
+            self.bubble.open()
 
     # ------------------------------------------------------------------ #
     # 余额与用量

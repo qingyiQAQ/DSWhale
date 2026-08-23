@@ -35,6 +35,15 @@ GROUP5_TEXTS = [
 ]
 GIF_FALLBACK_TEXTS = ["gif 加载失败了...", "今天没有动图给你看~", "呜呜 动图不见了..."]
 
+# 空闲俏皮话池：未点击时每 3-5 秒随机发送一句（仅文字，不含余额信息与 gif）。
+# 复用 GROUP2/3/5 的俏皮话 + 「哦鲸鲸」；元组为 (文本, 样式档, 是否换行)。
+IDLE_REMARKS = [
+    *[(text, "B", False) for text in GROUP2_TEXTS],
+    *[(text, "A", True) for text in GROUP3_TEXTS],
+    *[(text, "A", True) for text in GROUP5_TEXTS],
+    ("哦鲸鲸... ", "B", False),
+]
+
 # 峰谷文案（按 peakMode 映射）。
 PEAK_TEXT = {
     "default": ("空闲时段", "高峰时段"),
@@ -104,3 +113,9 @@ def pick_random_lines(is_peak: bool, peak_mode: str, today_usage: Optional[float
 def gif_fallback_lines() -> dict[str, Any]:
     """gif 加载失败时的降级文字台词。"""
     return _single_center("A", _pick_one(GIF_FALLBACK_TEXTS), wrap=True)
+
+
+def pick_idle_remark() -> dict[str, Any]:
+    """空闲时随机返回一句俏皮话（单行文字，结构兼容 bubble.set_random）。"""
+    text, style, wrap = _pick_one(IDLE_REMARKS)
+    return _single_center(style, text, wrap=wrap)
