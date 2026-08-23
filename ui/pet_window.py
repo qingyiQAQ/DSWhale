@@ -188,6 +188,7 @@ class PetWindow(QWidget):
         self._balance_busy = False
 
         self._bubble_on = bool(self._config.get("bubbleOn", True))
+        self._idle_talk_on = bool(self._config.get("idleTalkOn", True))
         self._turn_cost_on = bool(self._config.get("turnCostOn", True))
         self._peak_mode = self._config.get("peakMode", "default")
         self._bubble_random_active = False
@@ -643,13 +644,16 @@ class PetWindow(QWidget):
     # 空闲俏皮话
     # ------------------------------------------------------------------ #
     def _arm_idle_talk(self) -> None:
-        """重新排定下一次空闲俏皮话（随机 10-20 秒）。"""
+        """重新排定下一次空闲俏皮话（随机 10-20 秒）；关闭闲置对话则停止计时。"""
+        if not self._idle_talk_on:
+            self._idle_talk_timer.stop()
+            return
         self._idle_talk_timer.start(random.randint(IDLE_TALK_MIN_MS, IDLE_TALK_MAX_MS))
 
     def _on_idle_talk(self) -> None:
         """空闲计时到点：弹一句随机俏皮话，并重新排定下一次。"""
         self._arm_idle_talk()
-        if not self._bubble_on or self._cost_bubble_active:
+        if not self._idle_talk_on or not self._bubble_on or self._cost_bubble_active:
             return
         # 余额气泡展示中不打断：余额变化时应覆盖俏皮话，而非被俏皮话覆盖。
         if self.bubble.is_open and not self._bubble_random_active:
@@ -808,6 +812,7 @@ class PetWindow(QWidget):
         self.menu.usage_mode_changed.connect(self._on_usage_mode)
         self.menu.peak_mode_changed.connect(self._on_peak_mode)
         self.menu.bubble_on_changed.connect(self._on_bubble_on)
+        self.menu.idle_talk_on_changed.connect(self._on_idle_talk_on)
         self.menu.turn_cost_on_changed.connect(self._on_turn_cost_on)
         self.menu.turn_cost_close_changed.connect(self._on_turn_cost_close)
         self.menu.scroll_gap_on_changed.connect(self._on_scroll_gap_on)
@@ -866,6 +871,17 @@ class PetWindow(QWidget):
         self._config.set("bubbleOn", on)
         if not on:
             self._hide_cost_bubble()
+
+    def _on_idle_talk_on(self, on: bool) -> None:
+        """闲置对话开关：开启时重新排定计时，关闭时停止并收起当前俏皮话。"""
+        self._idle_talk_on = on
+        self._config.set("idleTalkOn", on)
+        if on:
+            self._arm_idle_talk()
+        else:
+            self._idle_talk_timer.stop()
+            if self._bubble_random_active:
+                self._hide_bubble()
 
     def _on_turn_cost_on(self, on: bool) -> None:
         self._turn_cost_on = on

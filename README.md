@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 ```bash
 # 建议：先把 DeepSeek 凭据写入环境变量，或放到 DSH 凭据文件
-set DEEPSEEK_API_KEY=sk-xxxxxxxx        # 或写入 ~/.dsh/.credentials.yaml
+set DEEPSEEK_API_KEY=sk-xxxxxxxx        # 或写入 ~/.dshw-pet/config.json
 set DEEPSEEK_PLATFORM_TOKEN=xxxxxx      # 可选：实时·令牌模式需要
 
 python main.py
@@ -43,20 +43,23 @@ python main.py
 ### 凭据解析优先级
 
 1. 环境变量 `DEEPSEEK_API_KEY` / `DEEPSEEK_PLATFORM_TOKEN`
-2. `~/.dsh/.credentials.yaml`（原 DSH 凭据服务，轻量键值解析，无需 PyYAML）
-3. `~/.dshw-pet/config.json`
+2. `~/.dshw-pet/config.json`（本地 JSON）
+3. `~/.dsh/.credentials.yaml`（原 DSH 凭据服务，轻量键值解析，无需 PyYAML）
 
 未配置 `DEEPSEEK_API_KEY` 时，气泡会显示「未配置」提示，其余功能（拖拽 / 音效 / 菜单）不受影响。
 
-## 数据文件兼容
+## 数据文件
 
-桌宠**复用原网页挂件的数据文件**，你的历史设置与账本无缝继承：
+桌宠**优先读写自有目录 `~/.dshw-pet`**，读取不到才降级到 `~/.dsh` 以继承原网页挂件的旧数据：
 
-| 用途 | 路径（优先） | 回退路径 |
+| 用途 | 路径（优先） | 降级路径 |
 |------|--------------|----------|
-| 设置（大小 / 音量 / 模式…） | `~/.dsh/.dshw-size.json` | `~/.dshw-pet/settings.json` |
-| 账本（今日已用 / 历史） | `~/.dsh/.dshw-usage.json` | `~/.dshw-pet/usage.json` |
-| 凭据 | `~/.dsh/.credentials.yaml` | `~/.dshw-pet/config.json` |
+| 设置（大小 / 音量 / 模式…） | `~/.dshw-pet/settings.json` | `~/.dsh/.dshw-size.json` |
+| 账本（今日已用 / 历史） | `~/.dshw-pet/usage.json` | `~/.dsh/.dshw-usage.json` |
+| 凭据 | `~/.dshw-pet/config.json` | `~/.dsh/.credentials.yaml` |
+
+桌宠菜单「气泡」下的「闲置对话」开关控制未点击时的俏皮话气泡；俏皮话内容与权重可在
+`config/idle_remarks.json` 中自定义（缺失/损坏时回退内置默认）。
 
 ## 操作说明
 
@@ -76,6 +79,7 @@ DSWhale/
 ├── main.py                 # 入口：日志 + QApplication + PetWindow + 异常兜底
 ├── requirements.txt
 ├── assets/                 # 鲸鱼图 / gif / 音效（原项目资源）
+├── config/                 # 用户配置（俏皮话内容与权重 idle_remarks.json）
 ├── core/                   # 与 UI 无关的逻辑层（纯 Python + 标准库）
 │   ├── http_util.py        #   urllib JSON GET 封装（异常分类）
 │   ├── config.py           #   设置 / 凭据解析与持久化

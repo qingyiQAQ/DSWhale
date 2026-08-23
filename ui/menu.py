@@ -97,6 +97,7 @@ class MenuWidget(QWidget):
     usage_mode_changed = Signal(str)
     peak_mode_changed = Signal(str)
     bubble_on_changed = Signal(bool)
+    idle_talk_on_changed = Signal(bool)
     turn_cost_on_changed = Signal(bool)
     turn_cost_close_changed = Signal(int)
     scroll_gap_on_changed = Signal(bool)
@@ -184,6 +185,13 @@ class MenuWidget(QWidget):
         self.bubble_check.setToolTip("开启/关闭思考气泡")
         self.bubble_check.toggled.connect(self.bubble_on_changed)
         root.addLayout(self._pack_row("气泡", self.bubble_check))
+
+        # 6b. 闲置对话（气泡选项下的子开关）：未点击时每 10-20 秒随机弹一句俏皮话。
+        self.idle_talk_check = QCheckBox()
+        self.idle_talk_check.setChecked(True)
+        self.idle_talk_check.setToolTip("未点击时每 10-20 秒随机弹一句俏皮话，3 秒后消失")
+        self.idle_talk_check.toggled.connect(self.idle_talk_on_changed)
+        root.addLayout(self._pack_row("闲置对话", self.idle_talk_check))
 
         # 7. 每轮消耗提示 + 自动关闭 + 秒。
         self.turn_cost_check = QCheckBox()
@@ -310,6 +318,7 @@ class MenuWidget(QWidget):
         self.usage_combo.blockSignals(True)
         self.peak_combo.blockSignals(True)
         self.bubble_check.blockSignals(True)
+        self.idle_talk_check.blockSignals(True)
         self.turn_cost_check.blockSignals(True)
         self.turn_cost_close_spin.blockSignals(True)
         self.scroll_gap_check.blockSignals(True)
@@ -338,6 +347,7 @@ class MenuWidget(QWidget):
         )
 
         self.bubble_check.setChecked(settings.get("bubbleOn", True))
+        self.idle_talk_check.setChecked(settings.get("idleTalkOn", True))
         self.turn_cost_check.setChecked(settings.get("turnCostOn", True))
         close_ms = int(settings.get("turnCostCloseMs", 5000) or 0)
         self.turn_cost_close_spin.setValue(max(0, close_ms // 1000))
@@ -354,6 +364,7 @@ class MenuWidget(QWidget):
         self.usage_combo.blockSignals(False)
         self.peak_combo.blockSignals(False)
         self.bubble_check.blockSignals(False)
+        self.idle_talk_check.blockSignals(False)
         self.turn_cost_check.blockSignals(False)
         self.turn_cost_close_spin.blockSignals(False)
         self.scroll_gap_check.blockSignals(False)

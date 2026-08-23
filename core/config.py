@@ -1,16 +1,16 @@
 """配置与凭据模块。
 
 负责三件事：
-1. 读取 / 持久化桌宠设置（复用原网页挂件的 ``.dshw-size.json``，格式完全兼容，
-   用户历史设置无缝继承）。
+1. 读取 / 持久化桌宠设置（优先自有目录 ``~/.dshw-pet``，读取不到再降级 ``~/.dsh``
+   以继承原插件的旧数据，格式兼容）。
 2. 解析 DeepSeek 凭据（``DEEPSEEK_API_KEY`` / ``DEEPSEEK_PLATFORM_TOKEN``），
-   优先级：环境变量 -> DSH 凭据文件 -> 本地 config.json。
-3. 提供账本文件路径（``.dshw-usage.json``）。
+   优先级：环境变量 -> 本地 config.json -> DSH 凭据文件。
+3. 提供账本文件路径。
 
-存储路径：
-- 设置文件：``~/.dsh/.dshw-size.json``（兼容原插件，回退 ``~/.dshw-pet/settings.json``）
-- 账本文件：``~/.dsh/.dshw-usage.json``（兼容原插件，回退 ``~/.dshw-pet/usage.json``）
-- 凭据文件：``~/.dsh/.credentials.yaml``（DSH 凭据服务）
+存储路径（优先 ``~/.dshw-pet``，读取不到再降级 ``~/.dsh``）：
+- 设置文件：``~/.dshw-pet/settings.json``（降级 ``~/.dsh/.dshw-size.json``）
+- 账本文件：``~/.dshw-pet/usage.json``（降级迁移 ``~/.dsh/.dshw-usage.json``）
+- 凭据文件：``~/.dshw-pet/config.json``（降级 ``~/.dsh/.credentials.yaml``）
 """
 
 from __future__ import annotations
@@ -24,25 +24,25 @@ from typing import Any, Optional
 
 logger = logging.getLogger(__name__)
 
-# 默认配置目录（回退用）。
+# 默认配置目录（优先，桌宠自有）。
 PET_HOME = os.path.join(os.path.expanduser("~"), ".dshw-pet")
-# DSH 主目录（原网页挂件的数据目录）。
+# DSH 主目录（降级读取用，兼容原网页挂件的旧数据）。
 DSH_HOME = os.path.join(os.path.expanduser("~"), ".dsh")
 
 # 设置文件候选路径（按优先级取第一个可读的；写入时取第一个可写的）。
 SETTINGS_CANDIDATES = [
-    os.path.join(DSH_HOME, ".dshw-size.json"),
     os.path.join(PET_HOME, "settings.json"),
+    os.path.join(DSH_HOME, ".dshw-size.json"),
 ]
 # 账本文件候选路径。
 LEDGER_CANDIDATES = [
-    os.path.join(DSH_HOME, ".dshw-usage.json"),
     os.path.join(PET_HOME, "usage.json"),
+    os.path.join(DSH_HOME, ".dshw-usage.json"),
 ]
 # 凭据文件候选路径。
 CREDENTIALS_CANDIDATES = [
-    os.path.join(DSH_HOME, ".credentials.yaml"),
     os.path.join(PET_HOME, "config.json"),
+    os.path.join(DSH_HOME, ".credentials.yaml"),
 ]
 
 # 默认设置（与原插件默认值一致）。
@@ -54,6 +54,7 @@ DEFAULT_SETTINGS: dict[str, Any] = {
     "usageMode": "ledger",
     "peakMode": "default",
     "bubbleOn": True,
+    "idleTalkOn": True,
     "turnCostOn": True,
     "turnCostCloseMs": 5000,
     "scrollGapOn": False,
@@ -152,7 +153,7 @@ class Config:
     # 凭据解析
     # ------------------------------------------------------------------ #
     def resolve_credential(self, name: str, env_name: str) -> Optional[str]:
-        """按「环境变量 -> DSH 凭据文件 -> 本地 config.json」顺序解析凭据。
+        """按「环境变量 -> 本地 config.json -> DSH 凭据文件」顺序解析凭据。
 
         参数:
             name: 凭据键名（如 ``DEEPSEEK_API_KEY``）。
@@ -163,17 +164,17 @@ class Config:
         if value:
             return value.strip()
 
-        # 2. DSH 凭据文件（.credentials.yaml 的简单键值解析，不依赖 PyYAML）。
-        cred_file = _first_readable(CREDENTIALS_CANDIDATES[:1])
-        if cred_file:
-            value = self._parse_credential_file(cred_file, name)
+        # 2. 本地 config.json（~/.dshw-pet，JSON，优先）。
+        local = CREDENTIALS_CANDIDATES[0]
+        if os.path.isfile(local):
+            value = self._parse_json_credential(local, name)
             if value:
                 return value
 
-        # 3. 本地 config.json。
-        local = os.path.join(PET_HOME, "config.json")
-        if os.path.isfile(local):
-            value = self._parse_json_credential(local, name)
+        # 3. DSH 凭据文件（.credentials.yaml 的简单键值解析，不依赖 PyYAML，降级）。
+        cred_file = CREDENTIALS_CANDIDATES[1]
+        if os.path.isfile(cred_file):
+            value = self._parse_credential_file(cred_file, name)
             if value:
                 return value
 
@@ -219,5 +220,22 @@ class Config:
 
 
 def ledger_path() -> str:
-    """返回账本文件路径（优先复用原插件路径）。"""
+    """返回账本写入路径（~/.dshw-pet 优先）。
+
+    若新路径尚无账本而旧 ~/.dsh 路径有历史账本，则先迁移一次（复制旧文件到新路径），
+    之后只读写新路径，彻底脱离 ~/.dsh。
+    """
+    new_path = LEDGER_CANDIDATES[0]
+    old_path = LEDGER_CANDIDATES[1]
+    if not os.path.isfile(new_path) and os.path.isfile(old_path):
+        try:
+            parent = os.path.dirname(new_path)
+            if parent and not os.path.isdir(parent):
+                os.makedirs(parent, exist_ok=True)
+            with open(old_path, "r", encoding="utf-8") as src, \
+                 open(new_path, "w", encoding="utf-8") as dst:
+                dst.write(src.read())
+            logger.info("[config] 已迁移旧账本 %s -> %s", old_path, new_path)
+        except OSError as exc:
+            logger.warning("[config] 旧账本迁移失败，改用新账本: %s", exc)
     return _first_writable(LEDGER_CANDIDATES)
