@@ -94,6 +94,14 @@ class MenuButton(QWidget):
         self.update()
         self._notify_parent("_schedule_btn_hide")
 
+    def mousePressEvent(self, event) -> None:
+        """吞掉按下事件，阻止其传播到父窗口（PetWindow）触发「菜单打开时点击关闭」逻辑。
+
+        否则菜单打开时点按钮：按下先传播到父窗口关闭菜单，松手又 clicked 重新打开，
+        表现为「每次点击都展示菜单」而非「展开/关闭」切换。
+        """
+        event.accept()
+
     def mouseReleaseEvent(self, event) -> None:
         """在按钮内松开左键即触发点击；不冒泡给父窗口，避免触发拖拽 / 气泡。"""
         if event.button() == Qt.MouseButton.LeftButton and self.rect().contains(event.position().toPoint()):
@@ -408,6 +416,11 @@ class PetWindow(QWidget):
         if event.button() != Qt.MouseButton.LeftButton:
             return
         pos = event.position()
+
+        # 菜单打开时：按下关闭菜单，不进入拖拽/气泡（对齐原项目 onDocPointerDown）。
+        if self._menu_open:
+            self._toggle_menu()
+            return
 
         # 1. 气泡打开时点击气泡 -> 切换台词 / 关闭。
         if self.bubble.is_open and self.bubble.hit_test(
@@ -754,6 +767,8 @@ class PetWindow(QWidget):
         self.menu.bubble_on_changed.connect(self._on_bubble_on)
         self.menu.turn_cost_on_changed.connect(self._on_turn_cost_on)
         self.menu.turn_cost_close_changed.connect(self._on_turn_cost_close)
+        self.menu.scroll_gap_on_changed.connect(self._on_scroll_gap_on)
+        self.menu.scroll_gap_changed.connect(self._on_scroll_gap_changed)
         self.menu.quit_requested.connect(QApplication.instance().quit)
         self.menu.turn_cost_close_spin.setEnabled(self._turn_cost_on)
 
@@ -763,6 +778,7 @@ class PetWindow(QWidget):
             self._position_menu()
             self.menu.show()
             self.menu.raise_()
+            self.menu.activateWindow()
         else:
             self.menu.hide()
         self._update_menu_btn_visibility()
@@ -817,6 +833,13 @@ class PetWindow(QWidget):
 
     def _on_turn_cost_close(self, seconds: int) -> None:
         self._config.set("turnCostCloseMs", max(0, int(seconds)) * 1000)
+
+    def _on_scroll_gap_on(self, on: bool) -> None:
+        """桌面端无滚动条，「避让滚动条」开关仅持久化、不影响窗口贴边（与原项目 UI 一致）。"""
+        self._config.set("scrollGapOn", on)
+
+    def _on_scroll_gap_changed(self, px: int) -> None:
+        self._config.set("scrollGapPx", max(0, int(px)))
 
     # ------------------------------------------------------------------ #
     # 关闭
