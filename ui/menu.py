@@ -51,6 +51,15 @@ QComboBox {
     font-size: 12px;
 }
 QComboBox:hover { background: rgba(32, 49, 112, 0.16); }
+QComboBox QAbstractItemView {
+    background: #ffffff;
+    color: #203170;
+    border: 1px solid rgba(32, 49, 112, 0.4);
+    border-radius: 6px;
+    selection-background-color: rgba(32, 49, 112, 0.15);
+    selection-color: #203170;
+    outline: none;
+}
 QSpinBox {
     border: 1px solid rgba(32, 49, 112, 0.4);
     border-radius: 6px;
