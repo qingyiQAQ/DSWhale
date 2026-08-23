@@ -453,7 +453,9 @@ class PetWindow(QWidget):
         if not self._is_whale_hit(pos):
             return
         self._dragging = True
-        self._drag_start = pos
+        # 用全局坐标记录起点：窗口随鼠标移动时，局部坐标原点也跟着变，
+        # 若用 event.position() 求增量会陷入反馈，导致鲸鱼只以鼠标一半速度移动。
+        self._drag_start = event.globalPosition()
         self._drag_orig = self.pos()
         self._drag_moved = False
         self._press_down()
@@ -462,7 +464,7 @@ class PetWindow(QWidget):
     def mouseMoveEvent(self, event) -> None:
         if not self._dragging:
             return
-        delta = event.position() - self._drag_start
+        delta = event.globalPosition() - self._drag_start
         if delta.x() ** 2 + delta.y() ** 2 >= 9:
             self._drag_moved = True
         area = self._work_area()
