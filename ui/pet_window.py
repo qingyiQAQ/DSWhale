@@ -44,6 +44,11 @@ BUBBLE_MS = 5000
 CHANGE_DELAY_MS = 300
 CHANGE_SETTLE_MS = 900
 
+# 空闲俏皮话（未点击时随机弹出）。
+IDLE_REMARK_MS = 3000     # 俏皮话气泡展示时长
+IDLE_TALK_MIN_MS = 10000  # 两次俏皮话的随机间隔下限
+IDLE_TALK_MAX_MS = 20000  # 两次俏皮话的随机间隔上限
+
 
 class _Signals(QObject):
     """跨线程信号桥：工作线程 emit，UI 线程槽函数接收（自动队列连接）。"""
@@ -584,13 +589,13 @@ class PetWindow(QWidget):
         self._bubble_random_active = False
         self.bubble.close()
 
-    def _restart_bubble_timer(self) -> None:
+    def _restart_bubble_timer(self, ms: int = BUBBLE_MS) -> None:
         if self._bubble_timer is not None:
             self._bubble_timer.stop()
         self._bubble_timer = QTimer(self)
         self._bubble_timer.setSingleShot(True)
         self._bubble_timer.timeout.connect(self._hide_bubble)
-        self._bubble_timer.start(BUBBLE_MS)
+        self._bubble_timer.start(ms)
 
     def _on_bubble_click(self) -> None:
         """点击气泡：消耗泡泡->关闭；首次->切随机台词；再次->关闭。"""
@@ -638,23 +643,26 @@ class PetWindow(QWidget):
     # 空闲俏皮话
     # ------------------------------------------------------------------ #
     def _arm_idle_talk(self) -> None:
-        """重新排定下一次空闲俏皮话（随机 3-5 秒）。"""
-        self._idle_talk_timer.start(random.randint(3000, 5000))
+        """重新排定下一次空闲俏皮话（随机 10-20 秒）。"""
+        self._idle_talk_timer.start(random.randint(IDLE_TALK_MIN_MS, IDLE_TALK_MAX_MS))
 
     def _on_idle_talk(self) -> None:
         """空闲计时到点：弹一句随机俏皮话，并重新排定下一次。"""
         self._arm_idle_talk()
         if not self._bubble_on or self._cost_bubble_active:
             return
+        # 余额气泡展示中不打断：余额变化时应覆盖俏皮话，而非被俏皮话覆盖。
+        if self.bubble.is_open and not self._bubble_random_active:
+            return
         self._show_idle_remark()
 
     def _show_idle_remark(self) -> None:
-        """展示一句随机俏皮话（气泡常开，每次到点更新内容；不带动画避免累积）。"""
-        self._cancel_bubble_timer()
+        """展示一句随机俏皮话，3 秒后气泡自动消失。"""
         self._bubble_random_active = True
         self.bubble.set_random(pick_idle_remark(), self.bubble.gif_available)
         if not self.bubble.is_open:
             self.bubble.open()
+        self._restart_bubble_timer(IDLE_REMARK_MS)
 
     # ------------------------------------------------------------------ #
     # 余额与用量
