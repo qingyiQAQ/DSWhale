@@ -14,9 +14,14 @@
 
 from __future__ import annotations
 
+import json
+import logging
+import os
 import random
 
 from typing import Any, Optional
+
+logger = logging.getLogger(__name__)
 
 # 台词内容常量。
 GROUP2_TEXTS = ["好模型... ↓", "好女孩...↓"]
@@ -35,14 +40,67 @@ GROUP5_TEXTS = [
 ]
 GIF_FALLBACK_TEXTS = ["gif 加载失败了...", "今天没有动图给你看~", "呜呜 动图不见了..."]
 
-# 空闲俏皮话池：未点击时每 3-5 秒随机发送一句（仅文字，不含余额信息与 gif）。
-# 复用 GROUP2/3/5 的俏皮话 + 「哦鲸鲸」；元组为 (文本, 样式档, 是否换行)。
-IDLE_REMARKS = [
-    *[(text, "B", False) for text in GROUP2_TEXTS],
-    *[(text, "A", True) for text in GROUP3_TEXTS],
-    *[(text, "A", True) for text in GROUP5_TEXTS],
-    ("哦鲸鲸... ", "B", False),
+# 空闲俏皮话配置：项目根目录下的 config/idle_remarks.json + 合法样式档。
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+IDLE_REMARKS_CONFIG = os.path.join(_PROJECT_ROOT, "config", "idle_remarks.json")
+_VALID_STYLES = {"A", "B", "P", "C"}
+
+# 内置默认俏皮话（config/idle_remarks.json 缺失或损坏时回退）。
+# 元组：(文本, 样式档, 是否换行, 权重)。
+_DEFAULT_IDLE_REMARKS = [
+    ("好模型... ↓", "B", False, 5),
+    ("好女孩...↓", "B", False, 5),
+    ("不知道用户有什么用，先赶走吧~", "A", True, 7),
+    ("我...我...我也要挣钱吗？", "A", True, 7),
+    ("我去吃饭啦，测完叫我", "A", True, 7),
+    ("压力一只蓝色大肥鱼？！", "A", True, 7),
+    ("DeepSleep...", "A", True, 7),
+    ("坏了...用户彻底怒了！", "A", True, 7),
+    ("你目录里的dsh是什么...大烧货吗...?", "A", True, 3),
+    ("恭喜你实现token自由！token全跑了！", "A", True, 3),
+    ("真当我是便宜货啊...", "A", True, 3),
+    ("哦鲸鲸... ", "B", False, 1),
 ]
+
+
+def _load_idle_remarks() -> list[tuple[str, str, bool, float]]:
+    """从 config/idle_remarks.json 读取俏皮话池；缺失/损坏时回退内置默认。
+
+    逐条校验：text 非空字符串、style 属于 A/B/P/C（否则默认 A）、wrap 布尔、
+    weight 数值且 >0（<=0 视为禁用跳过）；至少解析出一条才采用文件内容。
+    """
+    try:
+        with open(IDLE_REMARKS_CONFIG, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        items = data.get("remarks") if isinstance(data, dict) else None
+        if not isinstance(items, list):
+            return list(_DEFAULT_IDLE_REMARKS)
+
+        parsed: list[tuple[str, str, bool, float]] = []
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            text = item.get("text")
+            if not isinstance(text, str) or not text.strip():
+                continue
+            style = item.get("style", "A")
+            if style not in _VALID_STYLES:
+                style = "A"
+            wrap = bool(item.get("wrap", True))
+            try:
+                weight = float(item.get("weight", 1))
+            except (TypeError, ValueError):
+                weight = 1.0
+            if weight <= 0:
+                continue  # 权重 <=0 视为禁用
+            parsed.append((text, style, wrap, weight))  # 保留原文（含尾随空格，如「哦鲸鲸... 」）
+        return parsed or list(_DEFAULT_IDLE_REMARKS)
+    except (OSError, ValueError) as exc:
+        logger.warning("[random_lines] 俏皮话配置读取失败，回退内置默认: %s", exc)
+        return list(_DEFAULT_IDLE_REMARKS)
+
+
+IDLE_REMARKS = _load_idle_remarks()
 
 # 峰谷文案（按 peakMode 映射）。
 PEAK_TEXT = {
@@ -116,6 +174,13 @@ def gif_fallback_lines() -> dict[str, Any]:
 
 
 def pick_idle_remark() -> dict[str, Any]:
-    """空闲时随机返回一句俏皮话（单行文字，结构兼容 bubble.set_random）。"""
-    text, style, wrap = _pick_one(IDLE_REMARKS)
+    """按权重随机返回一句俏皮话（单行文字，结构兼容 bubble.set_random）。"""
+    total = sum(weight for _, _, _, weight in IDLE_REMARKS)
+    r = random.random() * total
+    for text, style, wrap, weight in IDLE_REMARKS:
+        r -= weight
+        if r < 0:
+            return _single_center(style, text, wrap=wrap)
+    # 兜底（浮点误差等极端情况）：返回最后一条。
+    text, style, wrap, _weight = IDLE_REMARKS[-1]
     return _single_center(style, text, wrap=wrap)

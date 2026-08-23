@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "remarks": [
+    { "text": "好模型... ↓", "weight": 5, "style": "B", "wrap": false },
+    { "text": "好女孩...↓", "weight": 5, "style": "B", "wrap": false },
+    { "text": "不知道用户有什么用，先赶走吧~", "weight": 7, "style": "A", "wrap": true },
+    { "text": "我...我...我也要挣钱吗？", "weight": 7, "style": "A", "wrap": true },
+    { "text": "我去吃饭啦，测完叫我", "weight": 7, "style": "A", "wrap": true },
+    { "text": "压力一只蓝色大肥鱼？！", "weight": 7, "style": "A", "wrap": true },
+    { "text": "DeepSleep...", "weight": 7, "style": "A", "wrap": true },
+    { "text": "坏了...用户彻底怒了！", "weight": 7, "style": "A", "wrap": true },
+    { "text": "你目录里的dsh是什么...大烧货吗...?", "weight": 3, "style": "A", "wrap": true },
+    { "text": "恭喜你实现token自由！token全跑了！", "weight": 3, "style": "A", "wrap": true },
+    { "text": "真当我是便宜货啊...", "weight": 3, "style": "A", "wrap": true },
+    { "text": "哦鲸鲸... ", "weight": 1, "style": "B", "wrap": false }
+  ]
+}
