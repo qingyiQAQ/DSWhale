@@ -19,7 +19,7 @@ import time
 from typing import Optional
 
 from PySide6.QtCore import QObject, QPoint, QPointF, QRectF, Qt, QTimer, QVariantAnimation, QEasingCurve, Signal
-from PySide6.QtGui import QColor, QGuiApplication, QImage, QPainter, QPixmap
+from PySide6.QtGui import QColor, QGuiApplication, QIcon, QImage, QPainter, QPixmap
 from PySide6.QtWidgets import QApplication, QWidget
 
 from core import ledger, pricing, usage
@@ -132,6 +132,7 @@ class PetWindow(QWidget):
                          | Qt.WindowType.Tool)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setWindowTitle("DeepSeek 小鲸鱼")
+        self.setWindowIcon(QIcon(os.path.join(assets_dir, "DSniang1.png")))
 
         self._assets_dir = assets_dir
 

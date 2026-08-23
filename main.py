@@ -70,6 +70,13 @@ def main() -> int:
 
     app = QApplication(sys.argv)
     app.setApplicationName("DeepSeek 小鲸鱼")
+    # Windows：为进程设置独立 AppUserModelID，避免任务栏把窗口归到 python.exe 名下。
+    if sys.platform == "win32":
+        try:
+            import ctypes
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("qingyi.dswhale.pet")
+        except Exception:  # noqa: BLE001 —— 非关键，失败不影响运行
+            pass
     # 应用图标：使用鲸鱼图（任务栏 / Alt-Tab / 任务管理器里显示的图标）。
     app.setWindowIcon(QIcon(os.path.join(ASSETS_DIR, "DSniang1.png")))
     app.setQuitOnLastWindowClosed(False)  # 菜单关闭不退出，仅主窗口关闭时退出。
