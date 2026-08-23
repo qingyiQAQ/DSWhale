@@ -127,8 +127,10 @@ class PetWindow(QWidget):
     """透明置顶的桌宠窗口。"""
 
     def __init__(self, assets_dir: str):
+        # Tool 窗口：不占任务栏 / Alt-Tab，桌宠只漂浮在桌面（无应用图标）。
         super().__init__(None, Qt.WindowType.FramelessWindowHint
-                         | Qt.WindowType.WindowStaysOnTopHint)
+                         | Qt.WindowType.WindowStaysOnTopHint
+                         | Qt.WindowType.Tool)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setWindowTitle("DeepSeek 小鲸鱼")
         self.setWindowIcon(QIcon(os.path.join(assets_dir, "DSniang1.png")))
