@@ -318,7 +318,8 @@ class BubbleRenderer(QObject):
                 rect = QRectF(text_cx - max_w / 2, y, max_w, block_h)
                 painter.drawText(rect, Qt.AlignmentFlag.AlignHCenter | Qt.TextFlag.TextWordWrap, slot.text)
             else:
-                painter.drawText(QRectF(0, y, w, block_h), Qt.AlignmentFlag.AlignHCenter, slot.text)
+                # 不换行文本同样以椭圆中心 text_cx 居中；否则会按整宽居中到 50% 处，偏离椭圆中心。
+                painter.drawText(QRectF(text_cx - w / 2, y, w, block_h), Qt.AlignmentFlag.AlignHCenter, slot.text)
             y += block_h + gap
 
     def _draw_gif(self, painter: QPainter, w: float, h: float, mirrored: bool) -> None:
