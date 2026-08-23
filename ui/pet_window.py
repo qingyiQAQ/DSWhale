@@ -275,6 +275,7 @@ class PetWindow(QWidget):
                 self._mirrored = (h_anchor == "left")
                 self._h_anchor = h_anchor
                 self._v_anchor = v_anchor
+                self._position_menu_button()  # 恢复镜像锚点时按钮跟随换边
                 logger.info("[pet] 恢复位置锚点 %s/%s", h_anchor, v_anchor)
                 return
             except (TypeError, ValueError):
@@ -351,7 +352,9 @@ class PetWindow(QWidget):
             return
         base = self.width()
         size = int(round(base * WHALE_RATIO))
-        left = base - size
+        # 鲸鱼始终贴屏幕边缘：未镜像贴右（right:0），镜像贴左（left:0）。
+        # 之前固定右下锚点，导致镜像后鲸鱼身体仍停在窗口右侧，永远到不了屏幕最左侧。
+        left = 0 if self._mirrored else base - size
         top = base - size
         painter.save()
         painter.translate(left, top)
@@ -373,10 +376,11 @@ class PetWindow(QWidget):
         self._position_menu_button()
 
     def _position_menu_button(self) -> None:
-        """把菜单按钮定位到鲸鱼右上角（位置与原假按钮一致，不随镜像改变）。"""
+        """把菜单按钮定位到鲸鱼顶角（未镜像=右上，镜像=左上，对齐原项目 right:4px/left:4px）。"""
         base = self.width()
         size = 26
-        self.menu_button.move(base - 4 - size, int(base * 0.4055) + 4)
+        x = 4 if self._mirrored else base - 4 - size
+        self.menu_button.move(x, int(base * 0.4055) + 4)
 
     def _update_menu_btn_visibility(self) -> None:
         """按悬停 / 菜单开关状态更新按钮可见性。"""
@@ -467,7 +471,7 @@ class PetWindow(QWidget):
         """鲸鱼透明命中检测（按 alpha 通道，与网页版 isWhaleHit 一致）。"""
         base = self.width()
         size = int(round(base * WHALE_RATIO))
-        left = base - size
+        left = 0 if self._mirrored else base - size
         top = base - size
         x, y = pos.x(), pos.y()
         if not (left <= x < left + size and top <= y < top + size):
@@ -534,6 +538,7 @@ class PetWindow(QWidget):
             self._v_anchor, target_y = None, top
 
         self._mirrored = (self._h_anchor == "left")
+        self._position_menu_button()  # 镜像切换时按钮跟随换边（右上<->左上）
         self._animate_move_to(QPoint(target_x, target_y))
         self._save_pos()
 
