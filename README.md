@@ -40,6 +40,8 @@ set DEEPSEEK_PLATFORM_TOKEN=xxxxxx      # 可选：实时·令牌模式需要
 python main.py
 ```
 
+无控制台运行：双击 `main.pyw`（或命令行 `pythonw main.py`），不弹出黑色控制台窗口。
+
 ### 凭据解析优先级
 
 1. 环境变量 `DEEPSEEK_API_KEY` / `DEEPSEEK_PLATFORM_TOKEN`

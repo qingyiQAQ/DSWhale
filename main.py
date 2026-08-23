@@ -43,10 +43,12 @@ def setup_logging() -> None:
     )
 
     # 控制台：INFO 及以上（运行时关键事件可见，避免 DEBUG 刷屏）。
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    console.setFormatter(fmt)
-    root.addHandler(console)
+    # pythonw 启动时 sys.stderr 为 None（无控制台），跳过避免空流报错。
+    if sys.stderr is not None:
+        console = logging.StreamHandler()
+        console.setLevel(logging.INFO)
+        console.setFormatter(fmt)
+        root.addHandler(console)
 
     # 文件：DEBUG 及以上（完整记录，含每轮消耗轮询等细节）。
     try:
