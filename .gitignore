@@ -1,0 +1,6 @@
+# 运行时日志
+dshw-pet.log
+
+# Python 字节码缓存
+__pycache__/
+*.pyc
