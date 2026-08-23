@@ -120,6 +120,7 @@ class MenuWidget(QWidget):
     turn_cost_close_changed = Signal(int)
     scroll_gap_on_changed = Signal(bool)
     scroll_gap_changed = Signal(int)
+    autostart_on_changed = Signal(bool)
     quit_requested = Signal()
 
     def __init__(self, parent: Optional[QWidget] = None):
@@ -249,6 +250,13 @@ class MenuWidget(QWidget):
             "宽度", self.scroll_gap_spin, "px",
         ))
 
+        # 9. 开机自启（桌面端扩展：登录 Windows 时自动无控制台启动桌宠）。
+        self.autostart_check = QCheckBox()
+        self.autostart_check.setChecked(False)
+        self.autostart_check.setToolTip("勾选后登录 Windows 自动启动桌宠（写入注册表 Run 项）")
+        self.autostart_check.toggled.connect(self.autostart_on_changed)
+        root.addLayout(self._pack_row("开机自启", self.autostart_check))
+
         # 退出按钮（桌面端扩展：提供关闭桌宠的入口）。
         self.quit_button = QPushButton("退出桌宠")
         self.quit_button.clicked.connect(self.quit_requested)
@@ -341,6 +349,7 @@ class MenuWidget(QWidget):
         self.turn_cost_close_spin.blockSignals(True)
         self.scroll_gap_check.blockSignals(True)
         self.scroll_gap_spin.blockSignals(True)
+        self.autostart_check.blockSignals(True)
 
         scale = float(settings.get("scale", 1.5))
         index = scale_to_index(scale)
@@ -375,6 +384,8 @@ class MenuWidget(QWidget):
         self.scroll_gap_spin.setValue(max(0, int(settings.get("scrollGapPx", 17) or 0)))
         self.scroll_gap_spin.setEnabled(scroll_gap_on)
 
+        self.autostart_check.setChecked(settings.get("autostartOn", False))
+
         self.scale_slider.blockSignals(False)
         self.scale_spin.blockSignals(False)
         self.sound_combo.blockSignals(False)
@@ -387,6 +398,7 @@ class MenuWidget(QWidget):
         self.turn_cost_close_spin.blockSignals(False)
         self.scroll_gap_check.blockSignals(False)
         self.scroll_gap_spin.blockSignals(False)
+        self.autostart_check.blockSignals(False)
 
     @staticmethod
     def _select_combo(combo: QComboBox, data: str) -> None:

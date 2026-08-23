@@ -59,6 +59,7 @@ DEFAULT_SETTINGS: dict[str, Any] = {
     "turnCostCloseMs": 5000,
     "scrollGapOn": False,
     "scrollGapPx": 17,
+    "autostartOn": False,
     # 桌面端扩展字段：
     "pos": None,          # 位置锚点记忆 {hAnchor, hDist, vAnchor, vDist}
     "dshServer": "http://127.0.0.1:3080",  # 每轮消耗轮询的 DSH 本地服务地址

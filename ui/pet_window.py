@@ -22,7 +22,7 @@ from PySide6.QtCore import QObject, QPoint, QPointF, QRectF, Qt, QTimer, QVarian
 from PySide6.QtGui import QColor, QGuiApplication, QIcon, QImage, QPainter, QPixmap
 from PySide6.QtWidgets import QApplication, QWidget
 
-from core import ledger, pricing, usage
+from core import autostart, ledger, pricing, usage
 from core.audio import SoundPlayer
 from core.balance import BalanceClient
 from core.config import Config, ledger_path
@@ -192,6 +192,7 @@ class PetWindow(QWidget):
         self._bubble_on = bool(self._config.get("bubbleOn", True))
         self._idle_talk_on = bool(self._config.get("idleTalkOn", True))
         self._turn_cost_on = bool(self._config.get("turnCostOn", True))
+        self._autostart_on = bool(self._config.get("autostartOn", False))
         self._peak_mode = self._config.get("peakMode", "default")
         self._bubble_random_active = False
         self._cost_bubble_active = False
@@ -821,6 +822,7 @@ class PetWindow(QWidget):
         self.menu.turn_cost_close_changed.connect(self._on_turn_cost_close)
         self.menu.scroll_gap_on_changed.connect(self._on_scroll_gap_on)
         self.menu.scroll_gap_changed.connect(self._on_scroll_gap_changed)
+        self.menu.autostart_on_changed.connect(self._on_autostart_on)
         self.menu.quit_requested.connect(QApplication.instance().quit)
         self.menu.turn_cost_close_spin.setEnabled(self._turn_cost_on)
 
@@ -886,6 +888,13 @@ class PetWindow(QWidget):
             self._idle_talk_timer.stop()
             if self._bubble_random_active:
                 self._hide_bubble()
+
+    def _on_autostart_on(self, on: bool) -> None:
+        """开机自启开关：写入 / 删除注册表 Run 项并持久化。"""
+        self._autostart_on = on
+        self._config.set("autostartOn", on)
+        if not autostart.set_enabled(on):
+            logger.warning("[pet] 开机自启设置未生效，请检查注册表权限")
 
     def _on_turn_cost_on(self, on: bool) -> None:
         self._turn_cost_on = on
